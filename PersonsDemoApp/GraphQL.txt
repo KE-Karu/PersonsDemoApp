@@ -1,0 +1,150 @@
+﻿https://localhost:44342/graphql/
+
+{persons{
+  id
+  natIdNr
+  firstName
+  lastName
+  address
+  gender
+  dateOfBirth
+	}
+}
+
+{person(id:1){
+  id
+  natIdNr
+  firstName
+  lastName
+  address
+  gender
+  dateOfBirth
+	}
+}
+
+{relations{
+  id,
+  personId,
+  relativeId,
+  relationType
+  reverseRelationType
+	}
+}
+
+{relation(id:1){
+  id,
+  person {
+    firstName
+    lastName
+    id
+    address
+    gender
+  }
+  relative{
+    firstName
+    lastName
+    id
+    address
+    gender
+  },
+  relationType
+  reverseRelationType
+	}
+}
+
+{
+  person(id: 2){
+    firstName,
+    lastName
+  	address,
+    natIdNr
+    personalRelations{
+      personId,
+      relativeId,
+      relationType,
+  		reverseRelationType
+    }
+  }
+}
+
+Create:
+
+mutation($person : AddPersonInput!){  
+  createPerson(person : $person){
+    firstName,
+    natIdNr,
+    nationality,
+    lastName
+    dateOfBirth,
+    address,
+    gender,
+    email
+    }  
+  }
+
+  {"person": 
+	{
+    "natIdNr": "495055211",
+    "nationality": "EST",
+    "firstName": "Marta",
+    "lastName": "Puravik",
+    "address": "Akadeemia",
+    "dateOfBirth": "2003-08-23",
+    "gender": "Female",
+    "email": "katse@katse.ee"
+	}
+}
+
+mutation ($person : AddPersonInput!, $personId : ID!){
+  updatePerson(person: $person, personId: $personId){
+    firstName
+    lastName
+    natIdNr
+    gender
+    nationality
+    address
+  }
+}
+
+{"person": {
+  "address": "something",
+  "firstName": "New",
+  "lastName": "Name", 
+  "natIdNr": "",
+  "gender": "Female",
+  "nationality": "FRA"
+},
+  "personId": 1
+}
+
+mutation($person : ID!){  
+  deletePerson(personId : $person)
+  }
+
+  {"person": 1}
+
+
+  mutation($personalRelation : ID!){  
+  deletePersonalRelation(personalRelation : $personalRelation)
+  }
+
+  {"personalRelation": 6}
+
+
+  mutation($personalRelation : AddPersonalRelationsInput!, $relationId: ID!){
+  updatePersonalRelation(personalRelation: $personalRelation, relationId: $relationId){
+    personId,
+    relativeId,
+    relationType,
+    reverseRelationType
+  }
+}
+
+{"personalRelation": {
+	"personId": 5,
+  "relativeId": 4,
+  "relationType": "Son",
+  "reverseRelationType": "Father"
+},
+  "relationId": 5 
+}
