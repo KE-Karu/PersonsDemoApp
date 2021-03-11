@@ -10,6 +10,7 @@
                 var p = to.GetType().GetProperty(name);
                 var v = property.GetValue(from);
                 p?.SetValue(to, v);
+
             }
         }
 
