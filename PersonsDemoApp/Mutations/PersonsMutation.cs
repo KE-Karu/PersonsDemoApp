@@ -80,25 +80,25 @@ namespace PersonsDemoApp.Mutations
 
             #region Personal Relations
             FieldAsync<PersonalRelationsType>(
-                "addPersonalRelation",
-                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<PersonalRelationsInputType>> { Name = "personalRelation" }),
+                "addRelation",
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<PersonalRelationsInputType>> { Name = "relation" }),
                 resolve: async context =>
                 {
-                    var personalDisease = context.GetArgument<PersonalRelations>("personalRelation");
+                    var personalDisease = context.GetArgument<PersonalRelations>("relation");
                     await relationRepository.Add(personalDisease);
                     return $"Relationship has been created succesfully.";
                 }
             );
 
             FieldAsync<PersonalRelationsType>(
-                "updatePersonalRelation",
+                "updateRelation",
                 arguments: new QueryArguments(
-                    new QueryArgument<NonNullGraphType<PersonalRelationsInputType>> { Name = "personalRelation" },
+                    new QueryArgument<NonNullGraphType<PersonalRelationsInputType>> { Name = "relation" },
                     new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "relationId" }
                     ),
                 resolve: async context =>
                 {
-                    var relationInput = context.GetArgument<PersonalRelations>("personalRelation");
+                    var relationInput = context.GetArgument<PersonalRelations>("relation");
                     var relationId = context.GetArgument<int>("relationId");
 
                     var relationInfoRetrived = await relationRepository.GetById(relationId);
@@ -117,11 +117,11 @@ namespace PersonsDemoApp.Mutations
             );
 
             FieldAsync<StringGraphType>(
-                "deletePersonalRelation",
-                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "personalRelationId" }),
+                "deleteRelation",
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "relationId" }),
                 resolve: async context =>
                 {
-                    var relationId = context.GetArgument<int>("personalRelationId");
+                    var relationId = context.GetArgument<int>("relationId");
 
                     var relationInfoRetrived = await relationRepository.GetById(relationId);
                     if (relationInfoRetrived == null)
