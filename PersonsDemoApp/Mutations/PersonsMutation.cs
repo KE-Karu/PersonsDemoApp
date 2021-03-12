@@ -22,8 +22,8 @@ namespace PersonsDemoApp.Mutations
                 resolve: async context =>
                 {
                     var personInput = context.GetArgument<Persons>("person");
-                    return await personRepository.Add(personInput);
-
+                    await personRepository.Add(personInput);
+                    return $"Person has been created succesfully.";
                 }
             );
 
@@ -53,8 +53,8 @@ namespace PersonsDemoApp.Mutations
                     personInfoRetrived.DateOfDeath = personInput.DateOfDeath;
                     personInfoRetrived.Address = personInput.Address;
                     personInfoRetrived.Gender = personInput.Gender;
-
-                    return await personRepository.Update(personInfoRetrived);
+                    await personRepository.Update(personInfoRetrived);
+                    return $"Person ID {personId} with Name {personInfoRetrived.FullName} has been updated succesfully.";
                 }
             );
 
@@ -85,7 +85,8 @@ namespace PersonsDemoApp.Mutations
                 resolve: async context =>
                 {
                     var personalDisease = context.GetArgument<PersonalRelations>("personalRelation");
-                    return await relationRepository.Add(personalDisease);
+                    await relationRepository.Add(personalDisease);
+                    return $"Relationship has been created succesfully.";
                 }
             );
 
@@ -110,8 +111,8 @@ namespace PersonsDemoApp.Mutations
                     relationInfoRetrived.RelativeId = relationInput.RelativeId;
                     relationInfoRetrived.RelationType = relationInput.RelationType;
                     relationInfoRetrived.ReverseRelationType = relationInput.ReverseRelationType;
-
-                    return await relationRepository.Update(relationInfoRetrived);
+                    await relationRepository.Update(relationInfoRetrived);
+                    return $"Relation ID {relationId} has been updated succesfully.";
                 }
             );
 
