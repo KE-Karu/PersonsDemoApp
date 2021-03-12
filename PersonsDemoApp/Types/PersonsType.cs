@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace PersonsDemoApp.Types
 {
-    public class PersonsType : ObjectGraphType<Persons>
+    public class PersonsType : ObjectGraphType<Person>
     {
         public PersonsType(IPersonRepository personRepository)
         {
@@ -20,9 +20,9 @@ namespace PersonsDemoApp.Types
             Field(x => x.Email).Description("Personal email");
             //Field(x => x.Gender).Description("Gender of the Person");
 
-            Field<GenderType>(nameof(Persons.Gender));
+            Field<GenderType>(nameof(Person.Gender));
 
-            FieldAsync<ListGraphType<PersonalRelationsType>, IReadOnlyCollection<PersonalRelations>>(
+            FieldAsync<ListGraphType<PersonalRelationsType>, IReadOnlyCollection<PersonalRelation>>(
                 "personalRelations", "returns list of all personal relations",
                 resolve: context =>
                 {

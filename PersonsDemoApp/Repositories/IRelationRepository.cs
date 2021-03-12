@@ -2,7 +2,7 @@
 
 namespace PersonsDemoApp.Repositories
 {
-    public interface IRelationRepository : IRepository<PersonalRelations>
+    public interface IRelationRepository : IRepository<PersonalRelation>
     {
     }
 }

@@ -10,7 +10,7 @@ using PersonsDemoApp.AppDbContext;
 namespace PersonsDemoApp.Migrations
 {
     [DbContext(typeof(PersonsDbContext))]
-    [Migration("20210311200953_First")]
+    [Migration("20210312223308_First")]
     partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,33 +21,7 @@ namespace PersonsDemoApp.Migrations
                 .HasAnnotation("ProductVersion", "5.0.3")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("PersonsDemoApp.Models.PersonalRelations", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("PersonId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RelationType")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RelativeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ReverseRelationType")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PersonId");
-
-                    b.ToTable("PersonalRelationships");
-                });
-
-            modelBuilder.Entity("PersonsDemoApp.Models.Persons", b =>
+            modelBuilder.Entity("PersonsDemoApp.Models.Person", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -93,9 +67,35 @@ namespace PersonsDemoApp.Migrations
                     b.ToTable("Persons");
                 });
 
-            modelBuilder.Entity("PersonsDemoApp.Models.PersonalRelations", b =>
+            modelBuilder.Entity("PersonsDemoApp.Models.PersonalRelation", b =>
                 {
-                    b.HasOne("PersonsDemoApp.Models.Persons", "Person")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("PersonId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RelationType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RelativeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReverseRelationType")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PersonId");
+
+                    b.ToTable("PersonalRelationships");
+                });
+
+            modelBuilder.Entity("PersonsDemoApp.Models.PersonalRelation", b =>
+                {
+                    b.HasOne("PersonsDemoApp.Models.Person", "Person")
                         .WithMany("PersonalRelations")
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -104,7 +104,7 @@ namespace PersonsDemoApp.Migrations
                     b.Navigation("Person");
                 });
 
-            modelBuilder.Entity("PersonsDemoApp.Models.Persons", b =>
+            modelBuilder.Entity("PersonsDemoApp.Models.Person", b =>
                 {
                     b.Navigation("PersonalRelations");
                 });

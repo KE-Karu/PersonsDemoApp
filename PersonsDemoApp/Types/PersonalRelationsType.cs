@@ -4,7 +4,7 @@ using PersonsDemoApp.Repositories;
 
 namespace PersonsDemoApp.Types
 {
-    public class PersonalRelationsType : ObjectGraphType<PersonalRelations>
+    public class PersonalRelationsType : ObjectGraphType<PersonalRelation>
     {
         public PersonalRelationsType(IPersonRepository personRepository)
         {
@@ -12,18 +12,18 @@ namespace PersonsDemoApp.Types
             Field(x => x.PersonId, type: typeof(IdGraphType)).Description("Person Id");
             Field(x => x.RelativeId, type: typeof(IdGraphType)).Description("Relative Id");
 
-            FieldAsync<PersonsType, Persons>("relative", resolve: ctx =>
+            FieldAsync<PersonsType, Person>("relative", resolve: ctx =>
             {
                 return personRepository.GetById(ctx.Source.PersonId);
             });
 
-            FieldAsync<PersonsType, Persons>("person", resolve: ctx =>
+            FieldAsync<PersonsType, Person>("person", resolve: ctx =>
             {
                 return personRepository.GetById(ctx.Source.PersonId);
             });
 
-            Field<RelationshipTypesType>(nameof(PersonalRelations.RelationType));
-            Field<RelationshipTypesType>(nameof(PersonalRelations.ReverseRelationType));
+            Field<RelationshipTypesType>(nameof(PersonalRelation.RelationType));
+            Field<RelationshipTypesType>(nameof(PersonalRelation.ReverseRelationType));
 
             //Field<RelationshipTypesType>(
             //    "relationshipTypes",

@@ -1,6 +1,6 @@
 ﻿namespace PersonsDemoApp.Models
 {
-    public enum RelationshipTypes
+    public enum RelationshipType
     {
         Mother,
         Father,

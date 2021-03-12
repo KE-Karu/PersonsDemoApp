@@ -3,5 +3,5 @@ using PersonsDemoApp.Models;
 
 namespace PersonsDemoApp.Types
 {
-    public class RelationshipTypesType : EnumerationGraphType<RelationshipTypes> { }
+    public class RelationshipTypesType : EnumerationGraphType<RelationshipType> { }
 }

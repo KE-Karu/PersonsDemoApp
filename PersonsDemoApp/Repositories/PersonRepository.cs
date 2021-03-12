@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace PersonsDemoApp.Repositories
 {
-    public sealed class PersonRepository : UniqueEntityRepository<Persons>, IPersonRepository
+    public sealed class PersonRepository : UniqueEntityRepository<Person>, IPersonRepository
     {
         private readonly PersonsDbContext context;
         public PersonRepository(PersonsDbContext con) : base(con, con.Persons) { context = con; }
 
-        public async Task<IReadOnlyCollection<PersonalRelations>> GetRelativesByPersonId(int personId)
+        public async Task<IReadOnlyCollection<PersonalRelation>> GetRelativesByPersonId(int personId)
         {
             return await context.PersonalRelationships.Where(o => o.PersonId == personId).ToListAsync();
         }

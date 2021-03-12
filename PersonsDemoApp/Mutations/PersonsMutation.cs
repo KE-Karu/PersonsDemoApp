@@ -21,7 +21,7 @@ namespace PersonsDemoApp.Mutations
                     ),
                 resolve: async context =>
                 {
-                    var personInput = context.GetArgument<Persons>("person");
+                    var personInput = context.GetArgument<Person>("person");
                     await personRepository.Add(personInput);
                     return $"Person has been created succesfully.";
                 }
@@ -35,7 +35,7 @@ namespace PersonsDemoApp.Mutations
                     ),
                 resolve: async context =>
                 {
-                    var personInput = context.GetArgument<Persons>("person");
+                    var personInput = context.GetArgument<Person>("person");
                     var personId = context.GetArgument<int>("personId");
 
                     var personInfoRetrived = await personRepository.GetById(personId);
@@ -84,7 +84,7 @@ namespace PersonsDemoApp.Mutations
                 arguments: new QueryArguments(new QueryArgument<NonNullGraphType<PersonalRelationsInputType>> { Name = "relation" }),
                 resolve: async context =>
                 {
-                    var personalDisease = context.GetArgument<PersonalRelations>("relation");
+                    var personalDisease = context.GetArgument<PersonalRelation>("relation");
                     await relationRepository.Add(personalDisease);
                     return $"Relationship has been created succesfully.";
                 }
@@ -98,7 +98,7 @@ namespace PersonsDemoApp.Mutations
                     ),
                 resolve: async context =>
                 {
-                    var relationInput = context.GetArgument<PersonalRelations>("relation");
+                    var relationInput = context.GetArgument<PersonalRelation>("relation");
                     var relationId = context.GetArgument<int>("relationId");
 
                     var relationInfoRetrived = await relationRepository.GetById(relationId);

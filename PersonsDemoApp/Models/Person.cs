@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PersonsDemoApp.Models
 {
-    public class Persons : Name
+    public class Person : Name
     {
         [Required]
         public string NatIdNr { get; set; }
@@ -14,6 +14,6 @@ namespace PersonsDemoApp.Models
         [Required]
         public Gender Gender { get; set; }
 
-        public ICollection<PersonalRelations> PersonalRelations { get; set; }
+        public ICollection<PersonalRelation> PersonalRelations { get; set; }
     }
 }

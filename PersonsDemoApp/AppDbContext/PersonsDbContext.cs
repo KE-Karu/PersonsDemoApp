@@ -7,8 +7,8 @@ namespace PersonsDemoApp.AppDbContext
     {
         public PersonsDbContext(DbContextOptions<PersonsDbContext> options) : base(options) { }
 
-        public DbSet<Persons> Persons { get; set; }
-        public DbSet<PersonalRelations> PersonalRelationships { get; set; }
+        public DbSet<Person> Persons { get; set; }
+        public DbSet<PersonalRelation> PersonalRelationships { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -19,8 +19,8 @@ namespace PersonsDemoApp.AppDbContext
         public static void InitializeTables(ModelBuilder builder)
         {
             if (builder is null) return;
-            builder.Entity<Persons>().ToTable(nameof(Persons)).HasIndex(a => a.NatIdNr).IsUnique();
-            builder.Entity<PersonalRelations>().ToTable(nameof(PersonalRelationships));
+            builder.Entity<Person>().ToTable(nameof(Persons)).HasIndex(a => a.NatIdNr).IsUnique();
+            builder.Entity<PersonalRelation>().ToTable(nameof(PersonalRelationships));
         }
     }
     

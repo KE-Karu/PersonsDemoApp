@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 
 namespace PersonsDemoApp.Repositories
 {
-    public interface IPersonRepository : IRepository<Persons>
+    public interface IPersonRepository : IRepository<Person>
     {
-        Task<IReadOnlyCollection<PersonalRelations>> GetRelativesByPersonId(int id);
+        Task<IReadOnlyCollection<PersonalRelation>> GetRelativesByPersonId(int id);
     }
 }
