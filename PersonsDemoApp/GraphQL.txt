@@ -1,4 +1,5 @@
 ﻿https://localhost:44342/graphql/
+http://localhost:52297/graphql
 
 {persons{
   id

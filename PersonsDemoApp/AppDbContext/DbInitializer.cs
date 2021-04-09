@@ -4,10 +4,10 @@ using System.Linq;
 
 namespace PersonsDemoApp.AppDbContext
 {
-    //public class DbInitializer
-    //{
-    //    public static void Initialize(PersonsDbContext context)
-    //    {
+    public class DbInitializer
+    {
+        public static void Initialize(PersonsDbContext context)
+        {
     //        if (context.Persons.Any())
     //        {
     //            return;
@@ -41,6 +41,6 @@ namespace PersonsDemoApp.AppDbContext
     //            context.PersonalRelationships.Add(d);
     //        }
     //        context.SaveChanges();
-    //    }
-    //}
+        }
+    }
 }

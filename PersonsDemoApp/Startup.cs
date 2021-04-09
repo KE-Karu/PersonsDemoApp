@@ -74,8 +74,7 @@ namespace PersonsDemoApp
             app.UseGraphQLWebSockets<PersonsSchema>("/graphql");
             // use HTTP middleware for ChatSchema at default path /graphql
             app.UseGraphQL<PersonsSchema>("/graphql");
-            // use graphql-playground middleware at default path /ui/playground
-            //app.UseGraphQLPlayground();
+
             //app.UseHttpsRedirection();
             app.UseStaticFiles();
 
