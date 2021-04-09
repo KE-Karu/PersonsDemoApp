@@ -6,7 +6,7 @@
   firstName
   lastName
   address
-  gender
+  sex
   dateOfBirth
 	}
 }
@@ -17,7 +17,7 @@
   firstName
   lastName
   address
-  gender
+  sex
   dateOfBirth
 	}
 }
@@ -38,14 +38,14 @@
     lastName
     id
     address
-    gender
+    sex
   }
   relative{
     firstName
     lastName
     id
     address
-    gender
+    sex
   },
   relationType
   reverseRelationType
@@ -77,7 +77,7 @@ mutation($person : AddPersonInput!){
     lastName
     dateOfBirth,
     address,
-    gender,
+    sex,
     email
     }  
   }
@@ -90,7 +90,7 @@ mutation($person : AddPersonInput!){
     "lastName": "Puravik",
     "address": "Akadeemia",
     "dateOfBirth": "2003-08-23",
-    "gender": "Female",
+    "sex": "Female",
     "email": "katse@katse.ee"
 	}
 }

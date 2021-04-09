@@ -14,9 +14,9 @@ namespace PersonsDemoApp.AppDbContext
             }
             var persons = new Person[]
             {
-                new Person{ NatIdNr = "34501234215 ", Nationality="EST", FirstName = "Ants", LastName= "Mustikas", DateOfBirth = DateTime.Parse("03-01-1945"), Address = "Viru 10", Gender = Gender.Male},
-                new Person{ NatIdNr = "39502114232", Nationality="ENG", FirstName = "Tõnu", LastName=" Vaarikas", DateOfBirth = DateTime.Parse("11-02-1995"), DateOfDeath = DateTime.Parse("01-01-2021"), Address = "Maardu 25", Gender = Gender.Male},
-                new Person{ NatIdNr = "49403136515", Nationality="EST", FirstName = "Mari", LastName=" Maasikas", DateOfBirth = DateTime.Parse("13-03-1994"), Address = "Lepa 32", Gender = Gender.Female}
+                new Person{ NatIdNr = "34501234215 ", Nationality="EST", FirstName = "Ants", LastName= "Mustikas", DateOfBirth = DateTime.Parse("03-01-1945"), Address = "Viru 10", Sex = "Male"},
+                new Person{ NatIdNr = "39502114232", Nationality="ENG", FirstName = "Tõnu", LastName=" Vaarikas", DateOfBirth = DateTime.Parse("11-02-1995"), DateOfDeath = DateTime.Parse("01-01-2021"), Address = "Maardu 25", Sex = "Male"},
+                new Person{ NatIdNr = "49403136515", Nationality="EST", FirstName = "Mari", LastName=" Maasikas", DateOfBirth = DateTime.Parse("13-03-1994"), Address = "Lepa 32", Sex = "Female"}
             };
             foreach (Person p in persons)
             {

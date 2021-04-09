@@ -15,7 +15,7 @@ namespace PersonsDemoApp.InputTypes
             Field<DateGraphType>("dateOfDeath");
             Field<StringGraphType>("email");
             Field<StringGraphType>("address");
-            Field<StringGraphType>("gender");
+            Field<StringGraphType>("sex");
         }
     }
 }

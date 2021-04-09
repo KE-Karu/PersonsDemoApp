@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace PersonsDemoApp.Types
 {
-    public class PersonsType : ObjectGraphType<Person>
+    public class PersonsType :  ObjectGraphType<Person>
     {
         public PersonsType(IPersonRepository personRepository)
         {
@@ -15,12 +15,10 @@ namespace PersonsDemoApp.Types
             Field(x => x.FirstName).Description("Persons First Name");
             Field(x => x.LastName).Description("Persons Last Name");
             Field(x => x.DateOfBirth).Description("Persons Date of Birth");
-            Field(x => x.DateOfDeath).Description("Persons Date of Death");
+            Field(x => x.DateOfDeath, nullable: true).Description("Persons Date of Death");
             Field(x => x.Address).Description("Persons Current Address");
             Field(x => x.Email).Description("Personal email");
-            //Field(x => x.Gender).Description("Gender of the Person");
-
-            Field<GenderType>(nameof(Person.Gender));
+            Field(x => x.Sex).Description("Gender of the Person");
 
             FieldAsync<ListGraphType<PersonalRelationsType>, IReadOnlyCollection<PersonalRelation>>(
                 "personalRelations", "returns list of all personal relations",

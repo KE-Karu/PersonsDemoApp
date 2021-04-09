@@ -22,8 +22,8 @@ namespace PersonsDemoApp.Mutations
                 resolve: async context =>
                 {
                     var personInput = context.GetArgument<Person>("person");
-                    await personRepository.Add(personInput);
-                    return $"Person has been created succesfully.";
+                    return await personRepository.Add(personInput);
+                    //return "Person has been created succesfully.";
                 }
             );
 
@@ -52,9 +52,9 @@ namespace PersonsDemoApp.Mutations
                     personInfoRetrived.DateOfBirth = personInput.DateOfBirth;
                     personInfoRetrived.DateOfDeath = personInput.DateOfDeath;
                     personInfoRetrived.Address = personInput.Address;
-                    personInfoRetrived.Gender = personInput.Gender;
-                    await personRepository.Update(personInfoRetrived);
-                    return $"Person ID {personId} with Name {personInfoRetrived.FullName} has been updated succesfully.";
+                    personInfoRetrived.Sex = personInput.Sex;
+                    return await personRepository.Update(personInfoRetrived);
+                    //return $"Person ID {personId} with Name {personInfoRetrived.FullName} has been updated succesfully.";
                 }
             );
 
@@ -85,8 +85,8 @@ namespace PersonsDemoApp.Mutations
                 resolve: async context =>
                 {
                     var personalDisease = context.GetArgument<PersonalRelation>("relation");
-                    await relationRepository.Add(personalDisease);
-                    return $"Relationship has been created succesfully.";
+                    return await relationRepository.Add(personalDisease);
+                    //return $"Relationship has been created succesfully.";
                 }
             );
 
@@ -111,8 +111,8 @@ namespace PersonsDemoApp.Mutations
                     relationInfoRetrived.RelativeId = relationInput.RelativeId;
                     relationInfoRetrived.RelationType = relationInput.RelationType;
                     relationInfoRetrived.ReverseRelationType = relationInput.ReverseRelationType;
-                    await relationRepository.Update(relationInfoRetrived);
-                    return $"Relation ID {relationId} has been updated succesfully.";
+                    return await relationRepository.Update(relationInfoRetrived);
+                    //return $"Relation ID {relationId} has been updated succesfully.";
                 }
             );
 

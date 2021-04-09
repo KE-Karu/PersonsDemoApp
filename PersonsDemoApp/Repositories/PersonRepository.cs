@@ -14,7 +14,9 @@ namespace PersonsDemoApp.Repositories
 
         public async Task<IReadOnlyCollection<PersonalRelation>> GetRelativesByPersonId(int personId)
         {
-            return await context.PersonalRelationships.Where(o => o.PersonId == personId).ToListAsync();
+            var query = context.PersonalRelationships.AsNoTracking().Where(o => o.Id == personId);
+            return await query.ToListAsync();
+            //return await context.PersonalRelationships.Where(o => o.PersonId == personId).ToListAsync();
         }
     }
 }

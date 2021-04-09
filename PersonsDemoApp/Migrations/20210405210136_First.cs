@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.Data.SqlClient;
 
 namespace PersonsDemoApp.Migrations
 {
@@ -17,11 +18,11 @@ namespace PersonsDemoApp.Migrations
                     Nationality = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Gender = table.Column<int>(type: "int", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateOfDeath = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateOfDeath = table.Column<DateTime>(type: "datetime2", nullable: true),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Sex = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -60,6 +61,8 @@ namespace PersonsDemoApp.Migrations
                 table: "Persons",
                 column: "NatIdNr",
                 unique: true);
+
+            migrationBuilder.Sql(InsertPerson);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -70,5 +73,41 @@ namespace PersonsDemoApp.Migrations
             migrationBuilder.DropTable(
                 name: "Persons");
         }
+
+        private const string InsertPerson = @"
+            CREATE PROCEDURE InsertPerson
+            (
+                @NatIdNr nvarchar(450),
+                @Nationality nvarchar(max),
+                @Email nvarchar(max),
+                @Address nvarchar(max),
+                @DateOfBirth datetime2,
+                @DateOfDeath datetime2,
+                @FirstName nvarchar(max),
+                @LastName nvarchar(max),
+                @Sex nvarchar(max)
+            )
+            AS
+                IF EXISTS (SELECT * FROM Persons WHERE NatIdNr = @NatIdNr)
+                BEGIN
+                    UPDATE Persons 
+                    SET 
+                        NatIdNr = @NatIdNr, 
+                        Nationality = @Nationality,
+                        Email = @Email, 
+                        Address = @Address,
+                        DateOfBirth = @DateOfBirth, 
+                        DateOfDeath = @DateOfDeath,
+                        FirstName = @FirstName, 
+                        LastName = @LastName,
+                        Sex = @Sex
+                    WHERE 
+                        NatIdNr =  @NatIdNr
+                END
+                ELSE
+                BEGIN
+                   INSERT into Persons 
+                   VALUES (@NatIdNr, @Nationality, @Email, @Address, @DateOfBirth, @DateOfDeath, @FirstName, @LastName, @Sex)
+                END";
     }
 }

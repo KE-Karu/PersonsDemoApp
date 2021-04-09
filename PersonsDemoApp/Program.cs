@@ -15,7 +15,7 @@ namespace PersonsDemoApp
             {
                 var services = scope.ServiceProvider;
                 var context = services.GetRequiredService<PersonsDbContext>();
-                DbInitializer.Initialize(context);
+                //DbInitializer.Initialize(context);
             }
             host.Run();
         }

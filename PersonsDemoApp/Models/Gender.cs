@@ -1,9 +1,10 @@
-﻿namespace PersonsDemoApp.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PersonsDemoApp.Models
 {
-    public enum Gender
+    public class Gender : Name
     {
-        Male,
-        Female,
-        Other
+        [Required]
+        public string Sex { get; set; }
     }
 }

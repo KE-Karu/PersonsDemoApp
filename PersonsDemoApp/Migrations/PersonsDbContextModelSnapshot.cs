@@ -32,7 +32,7 @@ namespace PersonsDemoApp.Migrations
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateOfDeath")
+                    b.Property<DateTime?>("DateOfDeath")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
@@ -41,9 +41,6 @@ namespace PersonsDemoApp.Migrations
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Gender")
-                        .HasColumnType("int");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -54,6 +51,10 @@ namespace PersonsDemoApp.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Nationality")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sex")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
