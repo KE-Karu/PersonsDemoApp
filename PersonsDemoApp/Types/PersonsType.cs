@@ -14,8 +14,8 @@ namespace PersonsDemoApp.Types
             Field(x => x.Nationality).Description("Persons Nationality");
             Field(x => x.FirstName).Description("Persons First Name");
             Field(x => x.LastName).Description("Persons Last Name");
-            //Field(x => x.DateOfBirth).Description("Persons Date of Birth");
-            //Field(x => x.DateOfDeath, nullable: true).Description("Persons Date of Death");
+            Field(x => x.DateOfBirth).Description("Persons Date of Birth");
+            Field(x => x.DateOfDeath, nullable: true).Description("Persons Date of Death");
             Field(x => x.Address).Description("Persons Current Address");
             Field(x => x.Email).Description("Personal email");
             Field(x => x.Sex).Description("Gender of the Person");

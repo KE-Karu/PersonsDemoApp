@@ -19,8 +19,8 @@ namespace PersonsDemoApp.AppDbContext
         public static void InitializeTables(ModelBuilder builder)
         {
             if (builder is null) return;
-            builder.Entity<Person>().ToTable(nameof(Persons)).HasIndex(a => a.NatIdNr).IsUnique();
-            builder.Entity<PersonalRelation>().ToTable(nameof(PersonalRelationships));
+            //builder.Entity<Person>().ToTable(nameof(Persons)).HasIndex(a => a.NatIdNr).IsUnique();
+            //builder.Entity<PersonalRelation>().ToTable(nameof(PersonalRelationships));
         }
     }
     

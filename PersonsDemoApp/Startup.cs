@@ -28,6 +28,23 @@ namespace PersonsDemoApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
+            //services.AddCors(c =>
+            //{
+            //    c.AddPolicy("AllowOrigin", options => options.WithOrigins("https://localhost:5001"));
+            //});
+            //services.AddCors(c =>
+            //{
+            //    c.AddPolicy("AllowOrigin", options => options.WithOrigins("http://localhost:5000"));
+            //});
+            //services.AddCors(c =>
+            //{
+            //    c.AddPolicy("AllowOrigin", options => options.WithOrigins("http://localhost:52297"));
+            //});
+      
             services.AddRazorPages();
             services.AddDbContext<PersonsDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -77,7 +94,7 @@ namespace PersonsDemoApp
 
             //app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseCors(option => option.AllowAnyOrigin());
             app.UseRouting();
 
             app.UseAuthorization();

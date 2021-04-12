@@ -49,8 +49,8 @@ namespace PersonsDemoApp.Mutations
                     personInfoRetrived.Email = personInput.Email;
                     personInfoRetrived.FirstName = personInput.FirstName;
                     personInfoRetrived.LastName = personInput.LastName;
-                    //personInfoRetrived.DateOfBirth = personInput.DateOfBirth;
-                    //personInfoRetrived.DateOfDeath = personInput.DateOfDeath;
+                    personInfoRetrived.DateOfBirth = personInput.DateOfBirth;
+                    personInfoRetrived.DateOfDeath = personInput.DateOfDeath;
                     personInfoRetrived.Address = personInput.Address;
                     personInfoRetrived.Sex = personInput.Sex;
                     return await personRepository.Update(personInfoRetrived);

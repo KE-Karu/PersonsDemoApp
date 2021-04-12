@@ -11,8 +11,8 @@ namespace PersonsDemoApp.InputTypes
             Field<StringGraphType>("nationality");
             Field<StringGraphType>("firstName");
             Field<StringGraphType>("lastName");
-            //Field<DateGraphType>("dateOfBirth");
-            //Field<DateGraphType>("dateOfDeath");
+            Field<DateGraphType>("dateOfBirth");
+            Field<DateGraphType>("dateOfDeath");
             Field<StringGraphType>("email");
             Field<StringGraphType>("address");
             Field<StringGraphType>("sex");
